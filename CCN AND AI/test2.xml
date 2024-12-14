@@ -1,0 +1,114 @@
+<PACKETTRACER5>
+  <VERSION>5.2.0.0068</VERSION>
+  <NETWORK>
+    <DEVICES>
+      <!-- Router 1 Configuration -->
+      <DEVICE>
+        <ENGINE>
+          <TYPE model="1841">Router</TYPE>
+          <NAME translate="true">Router1</NAME>
+          <POWER>true</POWER>
+        </ENGINE>
+        <MODULE>
+          <TYPE>eNonRemovableModule</TYPE>
+          <SLOT>FastEthernet0/0</SLOT>
+          <STATUS>UP</STATUS>
+          <IP>10.0.0.1</IP>
+          <SUBNET_MASK>255.255.255.252</SUBNET_MASK>
+        </MODULE>
+      </DEVICE>
+
+      <!-- Router 2 Configuration -->
+      <DEVICE>
+        <ENGINE>
+          <TYPE model="1841">Router</TYPE>
+          <NAME translate="true">Router2</NAME>
+          <POWER>true</POWER>
+        </ENGINE>
+        <MODULE>
+          <TYPE>eNonRemovableModule</TYPE>
+          <SLOT>FastEthernet0/0</SLOT>
+          <STATUS>UP</STATUS>
+          <IP>10.0.0.2</IP>
+          <SUBNET_MASK>255.255.255.252</SUBNET_MASK>
+        </MODULE>
+      </DEVICE>
+
+      <!-- Switch Configuration -->
+      <DEVICE>
+        <ENGINE>
+          <TYPE model="2960">Switch</TYPE>
+          <NAME translate="true">Switch1</NAME>
+          <POWER>true</POWER>
+        </ENGINE>
+      </DEVICE>
+
+      <!-- PC1 Configuration -->
+      <DEVICE>
+        <ENGINE>
+          <TYPE model="PC">End Device</TYPE>
+          <NAME translate="true">PC1</NAME>
+          <POWER>true</POWER>
+          <MODULE>
+            <TYPE>eNonRemovableModule</TYPE>
+            <NIC_TYPE>FastEthernet</NIC_TYPE>
+            <IP>192.168.1.10</IP>
+            <SUBNET_MASK>255.255.255.0</SUBNET_MASK>
+            <GATEWAY>192.168.1.1</GATEWAY>
+          </MODULE>
+        </ENGINE>
+      </DEVICE>
+
+      <!-- PC2 Configuration -->
+      <DEVICE>
+        <ENGINE>
+          <TYPE model="PC">End Device</TYPE>
+          <NAME translate="true">PC2</NAME>
+          <POWER>true</POWER>
+          <MODULE>
+            <TYPE>eNonRemovableModule</TYPE>
+            <NIC_TYPE>FastEthernet</NIC_TYPE>
+            <IP>192.168.2.10</IP>
+            <SUBNET_MASK>255.255.255.0</SUBNET_MASK>
+            <GATEWAY>192.168.2.1</GATEWAY>
+          </MODULE>
+        </ENGINE>
+      </DEVICE>
+    </DEVICES>
+
+    <!-- Connections -->
+    <CONNECTIONS>
+      <!-- Router-to-Router -->
+      <CONNECTION>
+        <DEVICE1>Router1</DEVICE1>
+        <INTERFACE1>FastEthernet0/0</INTERFACE1>
+        <DEVICE2>Router2</DEVICE2>
+        <INTERFACE2>FastEthernet0/0</INTERFACE2>
+      </CONNECTION>
+
+      <!-- Router1 to Switch -->
+      <CONNECTION>
+        <DEVICE1>Router1</DEVICE1>
+        <INTERFACE1>FastEthernet0/1</INTERFACE1>
+        <DEVICE2>Switch1</DEVICE2>
+        <INTERFACE2>FastEthernet1/1</INTERFACE2>
+      </CONNECTION>
+
+      <!-- Switch to PC1 -->
+      <CONNECTION>
+        <DEVICE1>Switch1</DEVICE1>
+        <INTERFACE1>FastEthernet1/2</INTERFACE1>
+        <DEVICE2>PC1</DEVICE2>
+        <INTERFACE2>FastEthernet0</INTERFACE2>
+      </CONNECTION>
+
+      <!-- Router2 to PC2 -->
+      <CONNECTION>
+        <DEVICE1>Router2</DEVICE1>
+        <INTERFACE1>FastEthernet0/1</INTERFACE1>
+        <DEVICE2>PC2</DEVICE2>
+        <INTERFACE2>FastEthernet0</INTERFACE2>
+      </CONNECTION>
+    </CONNECTIONS>
+  </NETWORK>
+</PACKETTRACER5>
